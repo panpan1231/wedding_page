@@ -19,6 +19,15 @@
   }
 }
 
+@font-face
+{
+    font-family: 'basheq';
+    src: url('./assets//fonts/basheqvintagedemoversionregular-gwpme.otf');
+    font-weight: normal;  
+    font-style: normal;  
+}
+
+
 body {
   background: var(--background);
   color: var(--foreground);
@@ -49,7 +58,8 @@ body {
   font-weight: 600;
   margin: 10px;
 }
-.App, .container {
+.App,
+.container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -58,7 +68,7 @@ body {
   overscroll-behavior: none;
 }
 
-canvas{
+canvas {
   position: absolute;
   top: 0;
   left: 0;
@@ -66,7 +76,7 @@ canvas{
   height: 100vh;
   z-index: -1;
 }
-.text-container{
+.text-container {
   background-image: url("/images/001.jpg");
   background-size: cover;
 }
@@ -74,20 +84,139 @@ canvas{
   fill: none;
 }
 
-.overscroll-behavior-none{ 
-  overscroll-behavior: none
+.overscroll-behavior-none {
+  overscroll-behavior: none;
 }
 
-.panel{
+.panel {
   width: 100vw;
   height: 100%;
+  margin: 0;
+  background-color: transparent;
 }
 
-.fade{
-  background-color: #000000A1;
+.fade {
+  background: linear-gradient(to bottom, #000000a1 10%, #000000);
 }
 
-iframe{
+iframe {
   width: 100%;
   background-color: #000000;
+}
+.horizon-container {
+  background-color: #6f5e4b;
+}
+
+.panel:nth-child(odd) {
+  background-color: transparent;
+}
+
+.fill-form {
+  background-image: url("/public/images/fillForm.jpg");
+  width: 100vw;
+  height: 217vw;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.fill-context {
+  background-color: #00000092;
+  color: #f3ebd3;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+}
+.fill-context > p{
+  padding: 10px 0;
+  font-size: 14px;
+}
+.fill-btn{
+  margin-top: 40px;
+  color: #fff;
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: 1.75px;
+  border: 1px solid #fff;
+  padding: 10px 20px;
+  border-radius: 50px;
+  background-color: #fff9f940;
+  transition: all .3s;
+  cursor: pointer;
+}
+
+.fill-btn:hover{
+  color: #f3ebd3;
+  background: linear-gradient(to right, #1b1919, #585858);
+  border-color: #f3ebd3;
+}
+
+.groom {
+  padding: 20px 20px 80px 40px;
+  background-image: url("/public/images/groom.jpg");
+  width: 100vw;
+  height: 217vw;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 70% center;
+}
+
+.bride {
+  padding: 20px 20px 80px 40px;
+  background-image: url("/public/images/bride.jpg");
+  width: 100vw;
+  height: 217vw;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.invite {
+  background-image: url("/public/images/invite.jpg");
+  width: 100vw;
+  height: 217vw;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.dress-code {
+  background-image: url("/public/images/dress-code.jpg");
+  width: 100vw;
+  height: 217vw;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.area-title > .sub-title{
+  color: #F3EBD3;
+  font-family: Arial;
+  font-style: italic;
+  font-size: 23px;
+  letter-spacing: 2px;
+  font-weight: 400;
+
+}
+.family-info{
+  letter-spacing: 2px;
+}
+
+.font-basheq{
+  font-family: "basheq";
+  color: #F3EBD3;
+  font-size: 52px;
+  letter-spacing: 4px;
+}
+
+.pannel-bg1{
+  background-image: url("/public/images/frame/7.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  width: 320px;
+  height: 420px;
 }
