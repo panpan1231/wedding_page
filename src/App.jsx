@@ -96,10 +96,19 @@ const App = () => {
         const video = document.getElementById("panel-v-1");
         const video2 = document.getElementById("panel-v-2");
         const video3 = document.getElementById("panel-v-3");
-        console.log(1111);
         if (video) {
+          video.muted = true;
+          video.playsInline = true;
           video.play();
+        }
+        if (video2) {
+          video2.muted = true;
+          video2.playsInline = true;
           video2.play();
+        }
+        if (video3) {
+          video3.muted = true;
+          video3.playsInline = true;
           video3.play();
         }
       },
@@ -200,7 +209,7 @@ const App = () => {
               width="275px"
               src="/video/MVI_0636_6.mp4"
               preload="true"
-              playsinline
+              playsInline
               muted
               loop
             ></video>
@@ -228,7 +237,7 @@ const App = () => {
               width="275px"
               src="/video/MVI_0636_5.mp4"
               preload="true"
-              playsinline
+              playsInline
               muted
               loop
             ></video>
@@ -240,7 +249,7 @@ const App = () => {
               width="275px"
               src="/video/MVI_0636_1.mp4"
               preload="true"
-              playsinline
+              playsInline
               muted
               loop
             ></video>
