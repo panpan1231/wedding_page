@@ -3,18 +3,18 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 
 const images = [
-  "/public/images/cursor/FZ1.jpg",
-  "/public/images/cursor/FZ2.jpg",
-  "/public/images/cursor/FZ3.jpg",
-  "/public/images/cursor/FZ4.jpg",
-  "/public/images/cursor/FZ5.jpg",
-  "/public/images/cursor/FZ6.jpg",
-  "/public/images/cursor/FZ7.jpg",
-  "/public/images/cursor/FZ8.jpg",
-  "/public/images/cursor/FZ9.jpg",
-  "/public/images/cursor/FZ10.jpg",
-  "/public/images/cursor/FZ11.jpg",
-  "/public/images/cursor/FZ12.jpg",
+  "/images/cursor/FZ1.jpg",
+  "/images/cursor/FZ2.jpg",
+  "/images/cursor/FZ3.jpg",
+  "/images/cursor/FZ4.jpg",
+  "/images/cursor/FZ5.jpg",
+  "/images/cursor/FZ6.jpg",
+  "/images/cursor/FZ7.jpg",
+  "/images/cursor/FZ8.jpg",
+  "/images/cursor/FZ9.jpg",
+  "/images/cursor/FZ10.jpg",
+  "/images/cursor/FZ11.jpg",
+  "/images/cursor/FZ12.jpg",
 ];
 
 export default function PhotoMarquee() {
