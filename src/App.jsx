@@ -198,7 +198,7 @@ const App = () => {
               className=" absolute top-[16px] left-[23px]"
               id="panel-v-1"
               width="275px"
-              src="/public/video/MVI_0636_6.mp4"
+              src="./assets/video/MVI_0636_6.mp4"
               preload="true"
               playsinline
               muted
@@ -226,7 +226,7 @@ const App = () => {
               className=" absolute top-[16px] left-[23px]"
               id="panel-v-2"
               width="275px"
-              src="/public/video/MVI_0636_5.mp4"
+              src="./assets/video/MVI_0636_5.mp4"
               preload="true"
               playsinline
               muted
@@ -238,7 +238,7 @@ const App = () => {
               className=" absolute top-[16px] left-[23px]"
               id="panel-v-3"
               width="275px"
-              src="/public/video/MVI_0636_1.mp4"
+              src="./assets/video/MVI_0636_1.mp4"
               preload="true"
               playsinline
               muted
