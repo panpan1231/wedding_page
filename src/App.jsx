@@ -252,7 +252,7 @@ const App = () => {
         {/* 背景層 */}
         <div className="absolute left-0 top-0 w-full aspect-[750/1628]">
           <img
-            src="/public/images/invite.jpg"
+            src="/images/invite.jpg"
             alt=""
             className="w-full h-auto object-contain pointer-events-none select-none scale-150"
             draggable={false}
