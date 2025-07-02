@@ -175,12 +175,8 @@ iframe {
 }
 
 .invite {
-  background-image: url("/public/images/invite.jpg");
   width: 100vw;
-  height: 217vw;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center center;
+  height: auto;
 }
 
 .dress-code {
@@ -212,6 +208,13 @@ iframe {
   letter-spacing: 4px;
 }
 
+.font-basheq-invite{
+  font-family: "basheq";
+  color: #F3EBD3;
+  letter-spacing: 4px;
+  line-height: 1;
+}
+
 .pannel-bg1{
   background-image: url("/public/images/frame/7.png");
   background-size: cover;
@@ -219,4 +222,8 @@ iframe {
   background-position: center center;
   width: 320px;
   height: 420px;
+}
+
+.fade-bg{
+  background-color: #0000007d;
 }

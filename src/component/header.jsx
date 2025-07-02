@@ -110,7 +110,6 @@ const Header = () => {
         end: "bottom -100%",
         scrub: true,
         pin: true,
-        markers: true,
       },
       onUpdate: render,
     });
