@@ -31,7 +31,7 @@ export default function PhotoMarquee() {
 
     row1Tween.current = gsap.to(row1, {
       y: -row1Height,
-      duration: 20,
+      duration: 18,
       ease: "none",
       repeat: -1,
       modifiers: {
@@ -51,8 +51,8 @@ export default function PhotoMarquee() {
   }, []);
 
   return (
-    <div className="photo-area py-20 overflow-hidden bg-black px-4 pt-8">
-      <div className="marquee-row flex justify-center items-center gap-4">
+    <div className="photo-area py-20 overflow-hidden bg-black pt-8 h-[470px]">
+      <div className="marquee-row flex justify-center items-center gap-10">
         <div
           className="flex flex-col items-center w-[50%]"
           onMouseEnter={() => row1Tween.current && row1Tween.current.pause()}
@@ -63,7 +63,7 @@ export default function PhotoMarquee() {
               <img
                 key={"row1-" + i}
                 src={src}
-                className="h-auto w-full my-2 rounded-lg shadow"
+                className="h-auto w-full my-2 shadow"
               />
             ))}
           </div>
@@ -82,7 +82,7 @@ export default function PhotoMarquee() {
                 <img
                   key={"row2-" + i}
                   src={src}
-                  className="h-auto w-full my-2 rounded-lg shadow"
+                  className="h-auto w-full my-2 shadow"
                 />
               ))}
           </div>

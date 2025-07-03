@@ -154,6 +154,18 @@ iframe {
   border-color: #f3ebd3;
 }
 
+.index {
+  background-image: url("/public/images/cover.jpg");
+  width: 100vw;
+  height: 217vw;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+.bg-scroll{
+  background-color: #00000069;
+}
+
 .groom {
   padding: 20px 20px 80px 40px;
   background-image: url("/public/images/groom.jpg");
