@@ -58,16 +58,6 @@ const App = () => {
       "#6F5E4B",
       "#65735E",
       "#65735E",
-      "#65735E",
-      "#65735E",
-      "#65735E",
-      "#6F5E4B",
-      "#6F5E4B",
-      "#6F5E4B",
-      "#6F5E4B",
-      "#65735E",
-      "#65735E",
-      "#65735E",
     ];
 
     // 水平滾動
@@ -115,10 +105,6 @@ const App = () => {
         const video = document.getElementById("panel-v-1");
         const video2 = document.getElementById("panel-v-2");
         const video3 = document.getElementById("panel-v-3");
-        const video4 = document.getElementById("panel-v-4");
-        const video5 = document.getElementById("panel-v-5");
-        const video6 = document.getElementById("panel-v-6");
-        const video7 = document.getElementById("panel-v-7");
         if (video) {
           video.muted = true;
           video.playsInline = true;
@@ -133,26 +119,6 @@ const App = () => {
           video3.muted = true;
           video3.playsInline = true;
           video3.play();
-        }
-        if (video4) {
-          video4.muted = true;
-          video4.playsInline = true;
-          video4.play();
-        }
-        if (video5) {
-          video5.muted = true;
-          video5.playsInline = true;
-          video5.play();
-        }
-        if (video6) {
-          video6.muted = true;
-          video6.playsInline = true;
-          video6.play();
-        }
-        if (video7) {
-          video7.muted = true;
-          video7.playsInline = true;
-          video7.play();
         }
       },
 
@@ -187,6 +153,9 @@ const App = () => {
 
   return (
     <div className="w-[100vw] h-auto overflow-x-hidden relative">
+      <section className="sticky top-0 z-10 h-screen"></section>
+      <section className="sticky top-0 z-20 h-screen"></section>
+      <section className="sticky top-0 z-30 h-screen"></section>
       <div className="index w-full h-[100vh] bg-black">
         <div className="flex justify-center items-center pt-[170px] px-[70px]">
           <svg
@@ -293,7 +262,7 @@ const App = () => {
           <div className="text-[18px]">女方主婚人｜游東堯 楊翠娟</div>
         </div>
       </div>
-      <div className="horizon-container border-none overscroll-behavior-none flex flex-nowrap w-[1000%] h-[100vh] z-20">
+      <div className="horizon-container border-none overscroll-behavior-none flex flex-nowrap w-[600%] h-[100vh] z-20">
         <section className="panel flex items-center relative">
           <div className="flex items-end grow-0 overflow-visible absolute left-[50%]">
             <div className="w-1/2 mr-10">
@@ -307,8 +276,8 @@ const App = () => {
             </div>
           </div>
         </section>
-        <section className="panel panel1-2"></section>
-        <section className="panel panel1-2"></section>
+        <section className="panel panel1-2">121212</section>
+        <section className="panel panel1-2">1313</section>
         <section className="panel" id="p1">
           <div className="pannel-bg1 relative rotate-12 left-[80px] top-[5%]">
             <video
@@ -325,33 +294,20 @@ const App = () => {
               <div className="text-[#F3EBD3] text-[20px] italic font-bold">
                 Address
               </div>
-              <div className="text-[#6F5E4B] text-[42px] mb-4 font-bold">
-                <span className="bg-[#F3EBD3] px-3 py-1 ">地點</span>
+              <div className="text-[#6F5E4B] text-[42px]  font-bold">
+                <span className="bg-[#F3EBD3] px-3">地點</span>
               </div>
-              <div className="text-[#6F5E4B] text-[30px] bg-[#F3EBD3] font-bold whitespace-nowrap px-2">
-                <span className="bg-[#F3EBD3]">圓觀 Palazzo Colonna</span>
+              <div className="text-[#6F5E4B] text-[42px] bg-[#F3EBD3] font-bold w-[460px]">
+                <span className="bg-[#F3EBD3] px-3">圓觀 Palazzo Colonna</span>
               </div>
             </div>
           </div>
         </section>
         <section className="panel panel1-2">2-2-2</section>
-        <section className="panel panel1-2">
-          <div className="pannel-bg-blank absolute rotate-12 left-0 top-[50%]">
-            <video
-              className="absolute top-[16px] left-[23px]"
-              id="panel-v-3"
-              width="275px"
-              src="/video/MVI_0636_1.mp4"
-              preload="true"
-              playsInline
-              muted
-              loop
-            ></video>
-          </div>
-        </section>
+        <section className="panel panel1-2">2-2-3</section>
 
         <section className="panel relative">
-          <div className="pannel-bg-blank absolute rotate-12 left-[90%] top-[20px]">
+          <div className="pannel-bg1 absolute rotate-12 left-[90%] top-[40px]">
             <video
               className=" absolute top-[16px] left-[23px]"
               id="panel-v-2"
@@ -363,14 +319,12 @@ const App = () => {
               loop
             ></video>
           </div>
-        </section>
-        <section className="panel">
-          <div className="pannel-bg4 absolute -rotate-12 left-[90%] top-[30%]">
+          <div className="pannel-bg1 absolute rotate-12 left-0 top-[50%]">
             <video
-              className="absolute top-[16px] left-[23px]"
-              id="panel-v-4"
+              className=" absolute top-[16px] left-[23px]"
+              id="panel-v-3"
               width="275px"
-              src="/video/MVI_0636_4.mp4"
+              src="/video/MVI_0636_1.mp4"
               preload="true"
               playsInline
               muted
@@ -378,96 +332,7 @@ const App = () => {
             ></video>
           </div>
         </section>
-        <section className="panel"></section>
-        <section className="panel"></section>
-        <section className="panel">
-          <div className="absolute left-0 top-[40%]">
-            <div className="text-[#F3EBD3] text-[20px] italic font-bold">
-              Ceremony
-            </div>
-            <div className="text-[#6F5E4B] text-[42px] mb-4 font-bold">
-              <span className="bg-[#F3EBD3] px-3 py-1 ">證婚儀式</span>
-            </div>
-            <div className="text-[#6F5E4B] text-[30px] font-bold whitespace-nowrap">
-              <span className="bg-[#F3EBD3] italic p-2">10:45 AM</span>
-            </div>
-          </div>
-        </section>
-        <section className="panel">
-          <div className="pannel-bg3 absolute  rotate-6 left-0 top-[10%]">
-            <video
-              className="absolute top-[16px] left-[23px]"
-              id="panel-v-5"
-              width="275px"
-              src="/video/MVI_0636_3.mp4"
-              preload="true"
-              playsInline
-              muted
-              loop
-            ></video>
-          </div>
-        </section>
-        <section className="panel"></section>
-        <section className="panel">
-          <div className="absolute left-0 top-[40%]">
-            <div className="text-[#F3EBD3] text-[20px] italic font-bold">
-              Cocktail
-            </div>
-            <div className="text-[#6F5E4B] text-[42px] mb-4 font-bold">
-              <span className="bg-[#F3EBD3] px-3 py-1 ">迎賓小點</span>
-            </div>
-            <div className="text-[#6F5E4B] text-[30px] font-bold whitespace-nowrap">
-              <span className="bg-[#F3EBD3] italic p-2">11:30 AM</span>
-            </div>
-          </div>
-        </section>
-        <section className="panel">
-          <img
-            src="/images/evol.png"
-            alt=""
-            className="w-full h-auto"
-            draggable={false}
-          />
-        </section>
-        <section className="panel">
-          <div className="pannel-bg2 absolute rotate-30 left-0 top-[10%]">
-            <video
-              className="absolute top-[16px] left-[23px]"
-              id="panel-v-6"
-              width="275px"
-              src="/video/MVI_0636_2.mp4"
-              preload="true"
-              playsInline
-              muted
-              loop
-            ></video>
-          </div>
-          <div className="pannel-bg2 absolute  rotate-6 left-0 top-[10%]">
-            <video
-              className="absolute top-[16px] left-[23px]"
-              id="panel-v-7"
-              width="275px"
-              src="/video/MVI_0636_2.mp4"
-              preload="true"
-              playsInline
-              muted
-              loop
-            ></video>
-          </div>
-        </section>
-        <section className="panel">
-          <div className="absolute left-[50%] top-[40%]">
-            <div className="text-[#F3EBD3] text-[20px] italic font-bold">
-              Party!
-            </div>
-            <div className="text-[#6F5E4B] text-[42px] mb-4 font-bold whitespace-nowrap">
-              <span className="bg-[#F3EBD3] px-3 py-1 ">午宴開始</span>
-            </div>
-            <div className="text-[#6F5E4B] text-[30px] font-bold whitespace-nowrap">
-              <span className="bg-[#F3EBD3] italic p-2">12:00 PM</span>
-            </div>
-          </div>
-        </section>
+        <section className="panel">FOUR</section>
       </div>
       <div className="invite relative w-full pb-[20px] text-[#F3EBD3] text-center overflow-visible z-10">
         {/* 背景層 */}

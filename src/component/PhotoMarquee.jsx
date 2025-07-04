@@ -26,12 +26,14 @@ export default function PhotoMarquee() {
   useGSAP(() => {
     const row1 = row1Ref.current;
     const row2 = row2Ref.current;
-    const row1Height = row1.scrollHeight / 2;
-    const row2Height = row2.scrollHeight / 2;
+    const firstImg = row1.querySelector("img");
+    const imgHeight = firstImg ? firstImg.offsetHeight : 0;
+    const row1Height = imgHeight * images.length;
+    const row2Height = imgHeight * images.length;
 
     row1Tween.current = gsap.to(row1, {
       y: -row1Height,
-      duration: 18,
+      duration: 24,
       ease: "none",
       repeat: -1,
       modifiers: {
@@ -41,7 +43,7 @@ export default function PhotoMarquee() {
 
     row2Tween.current = gsap.to(row2, {
       y: -row2Height,
-      duration: 22,
+      duration: 26,
       ease: "none",
       repeat: -1,
       modifiers: {
@@ -51,7 +53,7 @@ export default function PhotoMarquee() {
   }, []);
 
   return (
-    <div className="photo-area py-20 overflow-hidden bg-black pt-8 h-[470px]">
+    <div className="photo-area overflow-hidden bg-black h-[470px]">
       <div className="marquee-row flex justify-center items-center gap-10">
         <div
           className="flex flex-col items-center w-[50%]"
@@ -69,7 +71,7 @@ export default function PhotoMarquee() {
           </div>
         </div>
         <div
-          className="flex flex-col items-center w-[50%] mt-8"
+          className="flex flex-col items-center w-[50%]"
           onMouseEnter={() => row2Tween.current && row2Tween.current.pause()}
           onMouseLeave={() => row2Tween.current && row2Tween.current.play()}
         >

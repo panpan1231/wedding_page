@@ -72,8 +72,7 @@ canvas {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
+ 
   z-index: -1;
 }
 .text-container {
@@ -119,7 +118,7 @@ iframe {
   background-repeat: no-repeat;
 }
 .fill-context {
-  background-color: #00000092;
+  /* background-color: #00000092; */
   color: #f3ebd3;
   width: 100%;
   height: 100%;
@@ -156,8 +155,8 @@ iframe {
 
 .index {
   background-image: url("/public/images/cover.jpg");
-  width: 100vw;
-  height: 217vw;
+  width: auto;
+  height: 100vh;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
@@ -169,8 +168,8 @@ iframe {
 .groom {
   padding: 20px 20px 80px 40px;
   background-image: url("/public/images/groom.jpg");
-  width: 100vw;
-  height: 217vw;
+  width: auto;
+  height: 100vh;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: 70% center;
@@ -179,17 +178,13 @@ iframe {
 .bride {
   padding: 20px 20px 80px 40px;
   background-image: url("/public/images/bride.jpg");
-  width: 100vw;
-  height: 217vw;
+  width: auto;
+  height: 100vh;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
 }
 
-.invite {
-  width: 100vw;
-  height: auto;
-}
 
 .dress-code {
   background-image: url("/public/images/dress-code.jpg");
@@ -228,7 +223,43 @@ iframe {
 }
 
 .pannel-bg1{
-  background-image: url("/public/images/frame/7.png");
+  background-image: url("/public/images/frame/1.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  width: 320px;
+  height: 420px;
+}
+
+.pannel-bg2{
+  background-image: url("/public/images/frame/2.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  width: 320px;
+  height: 420px;
+}
+
+.pannel-bg3{
+  background-image: url("/public/images/frame/3.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  width: 320px;
+  height: 420px;
+}
+
+.pannel-bg4{
+  background-image: url("/public/images/frame/4.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  width: 320px;
+  height: 420px;
+}
+
+.pannel-bg-blank{
+  background-image: url("/public/images/frame/5.png");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
@@ -237,5 +268,5 @@ iframe {
 }
 
 .fade-bg{
-  background-color: #0000007d;
+  background-color: #000000bf;
 }
