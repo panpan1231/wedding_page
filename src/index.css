@@ -75,10 +75,7 @@ canvas {
  
   z-index: -1;
 }
-.text-container {
-  background-image: url("/images/001.jpg");
-  background-size: cover;
-}
+
 .st0 {
   fill: none;
 }
