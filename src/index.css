@@ -84,12 +84,6 @@ canvas {
   overscroll-behavior: none;
 }
 
-.panel {
-  width: 100vw;
-  height: 100%;
-  margin: 0;
-  background-color: transparent;
-}
 
 .fade {
   background: linear-gradient(to bottom, #000000a1 10%, #000000);
@@ -100,10 +94,11 @@ iframe {
   background-color: #000000;
 }
 .horizon-container {
-  background-color: #6f5e4b;
+  background-color: #783536;
 }
 
 .panel:nth-child(odd) {
+  width: 100vw;
   background-color: transparent;
 }
 
@@ -169,7 +164,7 @@ iframe {
   height: 100vh;
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: 70% center;
+  background-position: center;
 }
 
 .bride {
@@ -210,6 +205,8 @@ iframe {
   color: #F3EBD3;
   font-size: 52px;
   letter-spacing: 4px;
+  line-height: 1.1;
+
 }
 
 .font-basheq-invite{

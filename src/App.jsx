@@ -17,69 +17,161 @@ const App = () => {
   const beigeRef = useRef(null);
   const greyRef = useRef(null);
   const logoRef = useRef(null); // 新增 logoRef
+  const groomTitleRef = useRef(null); // 新增 groomTitleRef
+  const brideTitleRef = useRef(null); // 新增 brideTitleRef
+  const groomFamilyRef = useRef(null); // 新增 groomFamilyRef
+  const brideFamilyRef = useRef(null); // 新增 brideFamilyRef
+  const colors = [
+    "#783536",
+    "#783536",
+    "#783536",
+    "#783536",
+    "#783536",
+    "#6F5E4B",
+    "#6F5E4B",
+    "#6F5E4B",
+    "#783536",
+    "#783536",
+    "#6F5E4B",
+    "#6F5E4B",
+    "#6F5E4B",
+    "#6F5E4B",
+  ];
+  useGSAP(
+    () => {
+      // logo 淡入動畫
+      if (logoRef.current) {
+        gsap.fromTo(
+          logoRef.current,
+          { opacity: 0 },
+          { opacity: 1, duration: 1.5, ease: "power2.out" }
+        );
+      }
 
-  useEffect(() => {
-    // logo 淡入動畫
-    if (logoRef.current) {
-      gsap.fromTo(
-        logoRef.current,
-        { opacity: 0 },
-        { opacity: 1, duration: 1.5, ease: "power2.out" }
-      );
-    }
-    const target = animalRef.current.querySelector("#heart");
-    gsap.to(target, {
-      x: -5,
-      y: -10,
-      repeat: -1,
-      yoyo: true,
-      duration: 1,
-      fill: "pink",
-    });
-  }, []);
+      const target = animalRef.current.querySelector("#heart");
+      gsap.to(target, {
+        scale: 1.1,
+        repeat: -1,
+        yoyo: true,
+        duration: 1,
+        transformOrigin: "50% 50%",
+      });
+    },
+    { scope: "logo-animation" }
+  );
 
-  useEffect(() => {
-    const target = animalRef.current.querySelector("#hand");
-    gsap.to(target, {
-      rotation: "10deg",
-      repeat: -1,
-      yoyo: true,
-      duration: 1,
-    });
-  }, []);
+  // Groom 動畫 - 修正版本
+  useGSAP(
+    () => {
+      // 延遲初始化，確保 Header 動畫不會干擾
+      setTimeout(() => {
+        if (groomTitleRef.current) {
+          console.log("Groom title ref found:", groomTitleRef.current);
+
+          // 先設置初始狀態
+          gsap.set(groomTitleRef.current, { opacity: 0, y: 50 });
+
+          // 檢查 .groom 元素是否存在
+          const groomElement = document.querySelector(".groom");
+          console.log("Groom element found:", groomElement);
+
+          gsap.fromTo(
+            groomTitleRef.current,
+            { opacity: 0, y: 50 },
+            {
+              opacity: 1,
+              y: 0,
+              duration: 1.2,
+              ease: "power2.out",
+              scrollTrigger: {
+                trigger: groomElement || ".groom",
+                start: "top 80%",
+                end: "bottom 20%",
+                toggleActions: "play none none reverse",
+                id: "groom-animation", // 加上唯一標識
+                onEnter: () => {
+                  console.log("Groom trigger entered - starting animation");
+                  gsap.to(groomTitleRef.current, {
+                    opacity: 1,
+                    y: 0,
+                    duration: 1.2,
+                    ease: "power2.out",
+                  });
+                },
+                onLeave: () => {
+                  console.log("Groom trigger left - reversing animation");
+                  gsap.to(groomTitleRef.current, {
+                    opacity: 0,
+                    y: 50,
+                    duration: 1.2,
+                    ease: "power2.out",
+                  });
+                },
+              },
+            }
+          );
+        } else {
+          console.log("Groom title ref not found");
+        }
+      }, 100); // 延遲 100ms
+    },
+    { scope: "groom-test" }
+  );
+
+  // Bride 動畫 - 簡單測試版本
+  useGSAP(
+    () => {
+      // 延遲初始化，確保 Header 動畫不會干擾
+      setTimeout(() => {
+        if (brideTitleRef.current) {
+          console.log("Bride title ref found:", brideTitleRef.current);
+          gsap.fromTo(
+            brideTitleRef.current,
+            { opacity: 0, y: 50 },
+            {
+              opacity: 1,
+              y: 0,
+              duration: 1.2,
+              ease: "power2.out",
+              scrollTrigger: {
+                trigger: ".bride",
+                start: "top 80%",
+                toggleActions: "play none none reset",
+                id: "bride-animation", // 加上唯一標識
+                onEnter: () => console.log("Bride trigger entered"),
+                onLeave: () => console.log("Bride trigger left"),
+              },
+            }
+          );
+        } else {
+          console.log("Bride title ref not found");
+        }
+      }, 100); // 延遲 100ms
+    },
+    { scope: "bride-test" }
+  );
 
   useGSAP(() => {
     const panels = gsap.utils.toArray(".panel");
-    const colors = [
-      "#6F5E4B",
-      "#6F5E4B",
-      "#6F5E4B",
-      "#6F5E4B",
-      "#6F5E4B",
-      "#65735E",
-      "#65735E",
-      "#65735E",
-      "#65735E",
-      "#65735E",
-      "#6F5E4B",
-      "#6F5E4B",
-      "#6F5E4B",
-      "#6F5E4B",
-      "#65735E",
-      "#65735E",
-      "#65735E",
-    ];
 
+    const horizonContainer = document.querySelector(".horizon-container");
     // 水平滾動
-    gsap.to(panels, {
+    const horizAnim = gsap.to(panels, {
       xPercent: -100 * (panels.length - 1),
       ease: "none",
       scrollTrigger: {
         trigger: ".horizon-container",
         pin: true,
-        scrub: 1,
-        end: () =>
-          "+=" + document.querySelector(".horizon-container").offsetWidth,
+        scrub: 2,
+        start: "top top",
+        end: () => {
+          console.log(
+            "horizonContainer.scrollWidth",
+            horizonContainer.scrollWidth
+          );
+          return "+=" + (horizonContainer.scrollWidth - window.innerWidth);
+        },
+        id: "horizon-scroll",
       },
     });
 
@@ -91,7 +183,7 @@ const App = () => {
         end: () =>
           "+=" + document.querySelector(".horizon-container").offsetWidth,
         scrub: true,
-        pin: false, // 不要再 pin
+        id: "horizon-bg", // 新增唯一 id
       },
     });
     panels.forEach((panel, i) => {
@@ -111,6 +203,7 @@ const App = () => {
       trigger: "#panel-v-1", // 第二個 panel
       start: "left center",
       end: "right center",
+      id: "video-autoplay", // 新增唯一 id
       onEnter: () => {
         const video = document.getElementById("panel-v-1");
         const video2 = document.getElementById("panel-v-2");
@@ -163,6 +256,26 @@ const App = () => {
         }
       },
     });
+
+    // 為所有 .v-pannel 加入橫向滾動時的旋轉動畫（正確 containerAnimation）
+    gsap.utils.toArray(".v-pannel").forEach((el, i) => {
+      gsap.fromTo(
+        el,
+        { rotate: -2 },
+        {
+          rotate: 2,
+          scrollTrigger: {
+            trigger: el,
+            containerAnimation: horizAnim, // 傳 timeline
+            start: "left center",
+            end: "right center",
+            scrub: 2,
+            ease: "slow(0.7, 0.7, false)",
+            id: `v-pannel-rotate-${i}`,
+          },
+        }
+      );
+    });
   });
 
   useGSAP(() => {
@@ -177,18 +290,19 @@ const App = () => {
             trigger: dressCodeRef.current,
             start: "top 70%",
             toggleActions: "play none none reset",
+            id: "dresscode", // 新增唯一 id
           },
         })
         .to(ivoryRef.current, { opacity: 1, y: 0, duration: 0.6 })
         .to(beigeRef.current, { opacity: 1, y: 0, duration: 0.6 }, "+=0.2")
         .to(greyRef.current, { opacity: 1, y: 0, duration: 0.6 }, "+=0.2");
     }
-  }, []);
+  });
 
   return (
     <div className="w-[100vw] h-auto overflow-x-hidden relative">
       <div className="index w-full h-[100vh] bg-black">
-        <div className="flex justify-center items-center pt-[170px] px-[70px]">
+        <div className="flex justify-center items-center pt-[35%] px-[70px]">
           <svg
             ref={logoRef} // 加上 ref
             width="100%"
@@ -270,11 +384,11 @@ const App = () => {
       <Header />
 
       <div className="groom flex flex-col justify-between">
-        <div className="area-title">
+        <div className="area-title" ref={groomTitleRef}>
           <div className="font-basheq">Groom</div>
           <div className="sub-title">Pan Tuntai</div>
         </div>
-        <div className="family-info text-[#F3EBD3]">
+        <div className="family-info text-[#F3EBD3]" ref={groomFamilyRef}>
           <div className="text-[33px] tracking-[4px] mb-2 font-bold">
             潘敦泰
           </div>
@@ -282,35 +396,42 @@ const App = () => {
         </div>
       </div>
       <div className="bride flex flex-col justify-between">
-        <div className="area-title">
+        <div className="area-title" ref={brideTitleRef}>
           <div className="font-basheq">Bride</div>
           <div className="sub-title">Yu Yishan</div>
         </div>
-        <div className="family-info text-[#6F5E4B]">
+        <div className="family-info text-[#6F5E4B]" ref={brideFamilyRef}>
           <div className="text-[33px] tracking-[4px] mb-2 font-bold">
             游宜珊
           </div>
           <div className="text-[18px]">女方主婚人｜游東堯 楊翠娟</div>
         </div>
       </div>
-      <div className="horizon-container border-none overscroll-behavior-none flex flex-nowrap w-[1000%] h-[100vh] z-20">
-        <section className="panel flex items-center relative">
-          <div className="flex items-end grow-0 overflow-visible absolute left-[50%]">
+      <div
+        className="horizon-container border-none overscroll-behavior-none flex flex-nowrap h-[100vh]"
+        style={{ width: `${colors.length * 100}vw` }}
+      >
+        <section className="panel flex items-center relative w-screen">
+          <div className="flex items-end grow-0 overflow-visible absolute left-[20%]">
             <div className="w-1/2 mr-10">
               <AnimalSVG ref={animalRef} />
             </div>
             <div className="text-[#F3EBD3] flex flex-col justify-center">
-              <div className="text-[32px] leading-none italic">
+              <div className="text-[32px] font-bold leading-none italic mb-2">
                 Sunday Wedding Lunch
               </div>
-              <div className="text-[83px] leading-none italic">2025.11.02</div>
+              <div className="text-[83px] font-bold leading-none italic">
+                2025.11.02
+              </div>
             </div>
           </div>
         </section>
-        <section className="panel panel1-2"></section>
-        <section className="panel panel1-2"></section>
-        <section className="panel" id="p1">
-          <div className="pannel-bg1 relative rotate-12 left-[80px] top-[5%]">
+
+        <section className="w-screen panel">
+          <div className="w-screen"></div>
+        </section>
+        <section className="panel w-screen" id="p1">
+          <div className="pannel-bg1 v-pannel relative rotate-12 left-[40%] top-[5%] w-screen">
             <video
               className=" absolute top-[16px] left-[23px]"
               id="panel-v-1"
@@ -321,22 +442,24 @@ const App = () => {
               muted
               loop
             ></video>
-            <div className="absolute left-[110%] top-[40%] rotate-348">
-              <div className="text-[#F3EBD3] text-[20px] italic font-bold">
-                Address
-              </div>
-              <div className="text-[#6F5E4B] text-[42px] mb-4 font-bold">
-                <span className="bg-[#F3EBD3] px-3 py-1 ">地點</span>
-              </div>
-              <div className="text-[#6F5E4B] text-[30px] bg-[#F3EBD3] font-bold whitespace-nowrap px-2">
-                <span className="bg-[#F3EBD3]">圓觀 Palazzo Colonna</span>
-              </div>
+          </div>
+        </section>
+        <section className="w-screen panel">
+          <div className="absolute left-[40%] top-[40%]">
+            <div className="text-[#F3EBD3] text-[20px] italic font-bold">
+              Address
+            </div>
+            <div className="text-[#6F5E4B] text-[42px] mb-4 font-bold">
+              <span className="bg-[#F3EBD3] px-3 py-1 ">地點</span>
+            </div>
+            <div className="text-[#6F5E4B] text-[30px] bg-[#F3EBD3] font-bold whitespace-nowrap px-2">
+              <span className="bg-[#F3EBD3]">圓觀 Palazzo Colonna</span>
             </div>
           </div>
         </section>
-        <section className="panel panel1-2">2-2-2</section>
-        <section className="panel panel1-2">
-          <div className="pannel-bg-blank absolute rotate-12 left-0 top-[50%]">
+        <section className="w-screen panel"></section>
+        <section className="panel w-screen panel1-2">
+          <div className="pannel-bg-blank v-pannel absolute rotate-12 left-0 top-[50%]">
             <video
               className="absolute top-[16px] left-[23px]"
               id="panel-v-3"
@@ -350,8 +473,8 @@ const App = () => {
           </div>
         </section>
 
-        <section className="panel relative">
-          <div className="pannel-bg-blank absolute rotate-12 left-[90%] top-[20px]">
+        <section className="panel relative w-screen">
+          <div className="pannel-bg-blank v-pannel absolute rotate-12 left-0 top-[20px] w-screen">
             <video
               className=" absolute top-[16px] left-[23px]"
               id="panel-v-2"
@@ -364,8 +487,8 @@ const App = () => {
             ></video>
           </div>
         </section>
-        <section className="panel">
-          <div className="pannel-bg4 absolute -rotate-12 left-[90%] top-[30%]">
+        <section className="panel w-screen">
+          <div className="pannel-bg4 v-pannel absolute -rotate-12 left-[-30%] top-[30%] w-screen">
             <video
               className="absolute top-[16px] left-[23px]"
               id="panel-v-4"
@@ -378,10 +501,9 @@ const App = () => {
             ></video>
           </div>
         </section>
-        <section className="panel"></section>
-        <section className="panel"></section>
-        <section className="panel">
-          <div className="absolute left-0 top-[40%]">
+
+        <section className="panel w-screen">
+          <div className="absolute left-[-30%] top-[40%]">
             <div className="text-[#F3EBD3] text-[20px] italic font-bold">
               Ceremony
             </div>
@@ -393,8 +515,8 @@ const App = () => {
             </div>
           </div>
         </section>
-        <section className="panel">
-          <div className="pannel-bg3 absolute  rotate-6 left-0 top-[10%]">
+        <section className="panel w-screen">
+          <div className="pannel-bg3 v-pannel absolute rotate-6 left-0 top-[10%] w-screen">
             <video
               className="absolute top-[16px] left-[23px]"
               id="panel-v-5"
@@ -407,30 +529,30 @@ const App = () => {
             ></video>
           </div>
         </section>
-        <section className="panel"></section>
-        <section className="panel">
-          <div className="absolute left-0 top-[40%]">
+
+        <section className="panel w-screen">
+          <div className="absolute left-0 top-[40%] w-screen">
             <div className="text-[#F3EBD3] text-[20px] italic font-bold">
               Cocktail
             </div>
             <div className="text-[#6F5E4B] text-[42px] mb-4 font-bold">
-              <span className="bg-[#F3EBD3] px-3 py-1 ">迎賓小點</span>
+              <span className="bg-[#F3EBD3] px-3 py-1 ">開放入席</span>
             </div>
             <div className="text-[#6F5E4B] text-[30px] font-bold whitespace-nowrap">
               <span className="bg-[#F3EBD3] italic p-2">11:30 AM</span>
             </div>
           </div>
         </section>
-        <section className="panel">
+        <section className="panel w-screen">
           <img
             src="/images/evol.png"
             alt=""
-            className="w-full h-auto"
+            className="w-[120vw] h-auto relative left-[40%] rotate-350"
             draggable={false}
           />
         </section>
-        <section className="panel">
-          <div className="pannel-bg2 absolute rotate-30 left-0 top-[10%]">
+        <section className="panel w-screen">
+          <div className="pannel-bg2 v-pannel absolute rotate-30 left-0 top-[10%]">
             <video
               className="absolute top-[16px] left-[23px]"
               id="panel-v-6"
@@ -442,7 +564,7 @@ const App = () => {
               loop
             ></video>
           </div>
-          <div className="pannel-bg2 absolute  rotate-6 left-0 top-[10%]">
+          <div className="pannel-bg2  absolute w-screen rotate-6 left-0 top-[10%]">
             <video
               className="absolute top-[16px] left-[23px]"
               id="panel-v-7"
@@ -455,8 +577,8 @@ const App = () => {
             ></video>
           </div>
         </section>
-        <section className="panel">
-          <div className="absolute left-[50%] top-[40%]">
+        <section className="panel w-screen">
+          <div className="absolute left-[0%] top-[40%]">
             <div className="text-[#F3EBD3] text-[20px] italic font-bold">
               Party!
             </div>
@@ -467,6 +589,9 @@ const App = () => {
               <span className="bg-[#F3EBD3] italic p-2">12:00 PM</span>
             </div>
           </div>
+        </section>
+        <section className="w-screen panel">
+          <div className="w-screen"></div>
         </section>
       </div>
       <div className="invite relative w-full pb-[20px] text-[#F3EBD3] text-center overflow-visible z-10">

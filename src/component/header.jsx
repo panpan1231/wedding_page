@@ -9,7 +9,7 @@ gsap.registerPlugin(TextPlugin);
 const Header = () => {
   const canvasRef = useRef(null);
   const images = useRef([]);
-  const frameCount = 90; // 假设有两帧动画
+  const frameCount = 288; // 0~287 共288張
   const pathRef1 = useRef(null);
   const pathRef2 = useRef(null);
   const pathRef3 = useRef(null);
@@ -28,107 +28,102 @@ const Header = () => {
   ];
 
   //imgae scroll
-  useGSAP(() => {
-    const canvas = canvasRef.current;
-    const context = canvas.getContext("2d");
-    let imgAspect = 1;
-    let canvasH = window.innerHeight;
-    let canvasW = 400;
+  useGSAP(
+    () => {
+      const canvas = canvasRef.current;
+      const context = canvas.getContext("2d");
+      let imgAspect = 1;
+      let canvasH = window.innerHeight;
+      let canvasW = window.innerWidth;
 
-    // 加载图片
-    for (let i = 1; i < frameCount; i++) {
-      const img = new Image();
-      img.src = `/images/scroll/Snapshot20250409${i + 1}.png`;
-      img.onload = () => {
-        images.current[i] = img;
-        if (i === 11) {
+      // cover 並可縮小
+      function drawImageCoverZoom(ctx, img, x, y, w, h, scale = 0.8) {
+        const imgRatio = img.width / img.height;
+        const canvasRatio = w / h;
+        let drawWidth, drawHeight, offsetX, offsetY;
+        if (imgRatio > canvasRatio) {
+          drawHeight = h * scale;
+          drawWidth = img.width * (drawHeight / img.height);
+          offsetX = (w - drawWidth) / 2;
+          offsetY = (h - drawHeight) / 2;
+        } else {
+          drawWidth = w * scale;
+          drawHeight = img.height * (drawWidth / img.width);
+          offsetX = (w - drawWidth) / 2;
+          offsetY = (h - drawHeight) / 2;
+        }
+        ctx.drawImage(img, offsetX, offsetY, drawWidth, drawHeight);
+      }
+
+      // 加载图片
+      for (let i = 0; i <= 287; i++) {
+        const img = new Image();
+        const num = String(i).padStart(3, "0"); // 補零
+        img.src = `/images/scroll/MVI_0636${num}.jpg`;
+        img.onload = () => {
+          images.current[i] = img;
           imgAspect = img.width / img.height; // 寬/高
           canvasH = window.innerHeight;
-          canvasW = Math.round(canvasH * imgAspect);
+          canvasW = window.innerWidth;
           canvas.width = canvasW;
           canvas.height = canvasH;
           render();
-        }
-      };
-    }
-
-    const catAnimation = { frame: 11 };
-
-    gsap.to(catAnimation, {
-      frame: frameCount - 1,
-      snap: "frame",
-      ease: "none",
-      scrollTrigger: {
-        trigger: ".bg-scroll",
-        start: "top top",
-        end: "bottom top",
-        scrub: true,
-      },
-      onUpdate: render,
-    });
-    function render() {
-      let frame = Math.min(Math.round(catAnimation.frame), frameCount - 1);
-      const img = images.current[frame];
-      if (img instanceof HTMLImageElement) {
-        context.clearRect(0, 0, canvas.width, canvas.height);
-        context.filter = "grayscale(1)";
-        context.drawImage(img, 0, 0, canvas.width, canvas.height);
-        context.filter = "none";
-      } else {
-        context.clearRect(0, 0, canvas.width, canvas.height);
+        };
       }
-    }
 
-    // GSAP 文字滾動一行一行出現
-    const lines = gsap.utils.toArray(".story-line");
-    lines.forEach((line, i, arr) => {
-      gsap.fromTo(
-        line,
-        { opacity: 0, y: 30 },
-        {
-          opacity: 1,
-          y: 0,
-          scrollTrigger: {
-            trigger: ".test",
-            start: "top top",
-            end: "bottom top",
-            scrub: true,
-            markers: true,
+      const catAnimation = { frame: 0 };
 
-            onEnter: () => {
-              arr.forEach((el, idx) => {
-                if (idx !== i)
-                  gsap.to(el, { opacity: 0, y: 30, duration: 0.3 });
-              });
-            },
-            onEnterBack: () => {
-              arr.forEach((el, idx) => {
-                if (idx !== i)
-                  gsap.to(el, { opacity: 0, y: 30, duration: 0.3 });
-              });
-            },
-          },
+      gsap.to(catAnimation, {
+        frame: frameCount - 1,
+        snap: "frame",
+        ease: "none",
+        scrollTrigger: {
+          trigger: ".bg-scroll",
+          start: "top top",
+          end: "bottom top",
+          scrub: true,
+        },
+        onUpdate: render,
+      });
+      function render() {
+        let frame = Math.min(Math.round(catAnimation.frame), frameCount - 1);
+        const img = images.current[frame];
+        if (img instanceof HTMLImageElement) {
+          context.clearRect(0, 0, canvas.width, canvas.height);
+          context.filter = "grayscale(1)";
+          drawImageCoverZoom(
+            context,
+            img,
+            0,
+            0,
+            canvas.width,
+            canvas.height,
+            0.8
+          );
+          context.filter = "none";
+        } else {
+          context.clearRect(0, 0, canvas.width, canvas.height);
         }
-      );
-    });
-  });
+      }
+    },
+    { scope: "header-canvas" }
+  );
 
-  useEffect(() => {
+  useGSAP(() => {
     const section = document.querySelector(".bg-scroll");
-    ScrollTrigger.create({
+    const pinTrigger = ScrollTrigger.create({
       trigger: section,
-      start: "top center",
-      end: "bottom center",
+      start: "top top",
+      end: () => `+=2000`,
+      pin: true,
       scrub: true,
-      onUpdate: (self) => {
-        // 根據滾動進度計算顯示第幾行
-        const progress = self.progress;
-        const idx = Math.floor(progress * (lines.length - 1));
-        setCurrentLine(idx);
-      },
+      id: "header-pin",
     });
-    return () => ScrollTrigger.getAll().forEach((t) => t.kill());
-  }, []);
+
+    return () => {
+      pinTrigger.kill();
+    };
+  });
 
   return (
     <div className="bg-scroll w-[100vw] h-[100vh]">
