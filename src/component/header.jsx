@@ -36,8 +36,18 @@ const Header = () => {
       let canvasH = window.innerHeight;
       let canvasW = window.innerWidth;
 
+      // 讓canvas和父容器都100vw 100vh
+      function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        canvas.style.width = "100vw";
+        canvas.style.height = "100vh";
+        render();
+      }
+      window.addEventListener("resize", resizeCanvas);
+
       // cover 並可縮小
-      function drawImageCoverZoom(ctx, img, x, y, w, h, scale = 0.8) {
+      function drawImageCoverZoom(ctx, img, x, y, w, h, scale = 1) {
         const imgRatio = img.width / img.height;
         const canvasRatio = w / h;
         let drawWidth, drawHeight, offsetX, offsetY;
@@ -63,11 +73,7 @@ const Header = () => {
         img.onload = () => {
           images.current[i] = img;
           imgAspect = img.width / img.height; // 寬/高
-          canvasH = window.innerHeight;
-          canvasW = window.innerWidth;
-          canvas.width = canvasW;
-          canvas.height = canvasH;
-          render();
+          resizeCanvas();
         };
       }
 
@@ -98,13 +104,19 @@ const Header = () => {
             0,
             canvas.width,
             canvas.height,
-            0.8
+            1 // scale設1，確保鋪滿
           );
           context.filter = "none";
         } else {
           context.clearRect(0, 0, canvas.width, canvas.height);
         }
       }
+      // 初始化時resize一次
+      resizeCanvas();
+      // 清理resize事件
+      return () => {
+        window.removeEventListener("resize", resizeCanvas);
+      };
     },
     { scope: "header-canvas" }
   );
@@ -128,7 +140,7 @@ const Header = () => {
   return (
     <div className="bg-scroll w-[100vw] h-[100vh]">
       <div className="fade-bg h-full relative">
-        <canvas className="" ref={canvasRef}></canvas>
+        <canvas className="w-[100vw] h-[100vh] block" ref={canvasRef}></canvas>
         <div className="relative top-2/4 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center w-full px-8">
           <div className="fill-context z-30">
             <p>從 12 歲青澀的國中同學，</p>

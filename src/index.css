@@ -264,3 +264,31 @@ iframe {
 .fade-bg{
   background-color: #000000bf;
 }
+
+/* 響應式手機預覽外框 */
+.app-bg {
+  width: 100vw;
+  min-height: 100vh;
+  background: #222; /* 可自訂背景 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.app-mobile-frame {
+  width: 100vw;
+  min-height: 100vh;
+  max-width: 430px;
+  background: #000;
+  position: relative;
+  box-shadow: 0 0 40px #0008;
+  overflow: hidden;
+}
+@media (min-width: 431px) {
+  .app-mobile-frame {
+    border-radius: 32px;
+    min-height: 900px;
+    aspect-ratio: 430/932;
+    background: url('/images/phone.png') center/cover no-repeat, #000;
+    padding: 40px 0;
+  }
+}

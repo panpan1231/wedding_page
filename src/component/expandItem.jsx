@@ -30,7 +30,9 @@ export default function ExpandableItem({
           <span className="ml-4 flex justify-end items-end  font-bold">
             {subtitle}
             <svg
-              className={`ml-2 mb-[2px] transition-all duration-300`}
+              className={`ml-2 mb-[2px] transition-all duration-300 ${
+                isOpen ? "rotate-45" : "rotate-0"
+              }`}
               xmlns="http://www.w3.org/2000/svg"
               width={24}
               height={24}

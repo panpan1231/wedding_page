@@ -2,13 +2,17 @@ import React, { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 
-const images = [
+const images1 = [
   "/images/cursor/FZ1.jpg",
   "/images/cursor/FZ2.jpg",
   "/images/cursor/FZ3.jpg",
   "/images/cursor/FZ4.jpg",
   "/images/cursor/FZ5.jpg",
   "/images/cursor/FZ6.jpg",
+  "/images/cursor/FZ7.jpg",
+];
+
+const images2 = [
   "/images/cursor/FZ7.jpg",
   "/images/cursor/FZ8.jpg",
   "/images/cursor/FZ9.jpg",
@@ -28,8 +32,8 @@ export default function PhotoMarquee() {
     const row2 = row2Ref.current;
     const firstImg = row1.querySelector("img");
     const imgHeight = firstImg ? firstImg.offsetHeight : 0;
-    const row1Height = imgHeight * images.length;
-    const row2Height = imgHeight * images.length;
+    const row1Height = imgHeight * images1.length;
+    const row2Height = imgHeight * images2.length;
 
     row1Tween.current = gsap.to(row1, {
       y: -row1Height,
@@ -61,7 +65,7 @@ export default function PhotoMarquee() {
           onMouseLeave={() => row1Tween.current && row1Tween.current.play()}
         >
           <div className="marquee-inner flex flex-col" ref={row1Ref}>
-            {images.concat(images).map((src, i) => (
+            {images1.concat(images1).map((src, i) => (
               <img
                 key={"row1-" + i}
                 src={src}
@@ -76,10 +80,10 @@ export default function PhotoMarquee() {
           onMouseLeave={() => row2Tween.current && row2Tween.current.play()}
         >
           <div className="marquee-inner flex flex-col" ref={row2Ref}>
-            {images
+            {images2
               .slice()
               .reverse()
-              .concat(images.slice().reverse())
+              .concat(images2.slice().reverse())
               .map((src, i) => (
                 <img
                   key={"row2-" + i}

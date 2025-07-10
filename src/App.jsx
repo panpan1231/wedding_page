@@ -288,7 +288,7 @@ const App = () => {
         .timeline({
           scrollTrigger: {
             trigger: dressCodeRef.current,
-            start: "top 70%",
+            start: "top 50%",
             toggleActions: "play none none reset",
             id: "dresscode", // 新增唯一 id
           },
@@ -700,19 +700,6 @@ const App = () => {
       <div className="botoom-area w-full h-[80px] bg-black flex justify-center items-center">
         <p>© Pan&YU Wedding 2025</p>
       </div>
-      {/* <div className="w-[100vw] h-[5000vh]">
-        123
-        <iframe
-          src="https://docs.google.com/forms/d/e/1FAIpQLScS278TjxP8tcbXq4met27BAMllzlSG479-niFmZc9Ka_eklQ/viewform?embedded=true"
-          width="640"
-          height="2587"
-          frameBorder="0"
-          marginHeight="0"
-          marginWidth="0"
-        >
-          載入中…
-        </iframe>
-      </div> */}
     </div>
   );
 };
