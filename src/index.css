@@ -36,6 +36,12 @@ body {
   overscroll-behavior: none;
   
 }
+.index {
+  background-image: url("/images/cover.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
 
 .circle {
   width: 100px;
@@ -109,7 +115,7 @@ iframe {
 }
 
 .fill-form {
-  background-image: url("/public/images/fillForm.jpg");
+  background-image: url("/images/fillForm.jpg");
   width: 100vw;
   height: 100vh;
   background-size: cover;
@@ -157,12 +163,7 @@ iframe {
   height: 100vh;
 }
 
-.index {
-  background-image: url("/public/images/cover.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center center;
-}
+
 .bg-scroll{
   background-color: #00000069;
   height: 100vh;
@@ -170,7 +171,7 @@ iframe {
 }
 
 .form-pc {
-  background-image: url("/public/images/fillForm.jpg");
+  background-image: url("/images/fillForm.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -178,7 +179,7 @@ iframe {
 
 .groom {
   padding: 20px 20px 80px 40px;
-  background-image: url("/public/images/groom.jpg");
+  background-image: url("/images/groom.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -186,7 +187,7 @@ iframe {
 
 .bride {
   padding: 20px 20px 80px 40px;
-  background-image: url("/public/images/bride.jpg");
+  background-image: url("/images/bride.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
@@ -196,13 +197,13 @@ iframe {
   width: 100%;
   height: 801px;
   background-color: #4B372A;
-  background-image: url("/public/images/timeline.png");
+  background-image: url("/images/timeline.png");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
 }
 .dress-code {
-  background-image: url("/public/images/dress-code.jpg");
+  background-image: url("/images/dress-code.jpg");
   width: 100vw;
   height: 100vh;
   max-width: 430px;
@@ -241,7 +242,7 @@ iframe {
 }
 
 .pannel-bg1{
-  background-image: url("/public/images/frame/1.png");
+  background-image: url("/images/frame/1.png");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
@@ -250,7 +251,7 @@ iframe {
 }
 
 .pannel-bg2{
-  background-image: url("/public/images/frame/2.png");
+  background-image: url("/images/frame/2.png");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
@@ -259,7 +260,7 @@ iframe {
 }
 
 .pannel-bg3{
-  background-image: url("/public/images/frame/3.png");
+  background-image: url("/images/frame/3.png");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
@@ -268,7 +269,7 @@ iframe {
 }
 
 .pannel-bg4{
-  background-image: url("/public/images/frame/4.png");
+  background-image: url("/images/frame/4.png");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
@@ -277,7 +278,7 @@ iframe {
 }
 
 .pannel-bg-blank{
-  background-image: url("/public/images/frame/5.png");
+  background-image: url("/images/frame/5.png");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
