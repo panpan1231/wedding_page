@@ -9,7 +9,6 @@ const images1 = [
   "/images/cursor/FZ4.jpg",
   "/images/cursor/FZ5.jpg",
   "/images/cursor/FZ6.jpg",
-  "/images/cursor/FZ7.jpg",
 ];
 
 const images2 = [
@@ -57,7 +56,7 @@ export default function PhotoMarquee() {
   }, []);
 
   return (
-    <div className="photo-area overflow-hidden max-w-[430px] bg-black h-[110vh]">
+    <div className="photo-area overflow-hidden max-w-[430px] bg-black h-[100vh]">
       <div className="marquee-row flex justify-center items-center gap-10">
         <div
           className="flex flex-col items-center w-[50%]"
@@ -79,7 +78,10 @@ export default function PhotoMarquee() {
           onMouseEnter={() => row2Tween.current && row2Tween.current.pause()}
           onMouseLeave={() => row2Tween.current && row2Tween.current.play()}
         >
-          <div className="marquee-inner flex flex-col" ref={row2Ref}>
+          <div
+            className="marquee-inner flex flex-col min-h-[150px]"
+            ref={row2Ref}
+          >
             {images2
               .slice()
               .reverse()
