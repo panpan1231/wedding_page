@@ -57,7 +57,7 @@ export default function PhotoMarquee() {
   }, []);
 
   return (
-    <div className="photo-area overflow-hidden max-w-[430px] bg-black h-[110vh]">
+    <div className="photo-area overflow-hidden bg-black h-[110vh]">
       <div className="marquee-row flex justify-center items-center gap-10">
         <div
           className="flex flex-col items-center w-[50%]"

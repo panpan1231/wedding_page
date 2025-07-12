@@ -126,7 +126,7 @@ const App = () => {
             <div className="font-basheq">Bride</div>
             <div className="sub-title">Yu Yishan</div>
           </div>
-          <div className="family-info text-[#6F5E4B]">
+          <div className="family-info text-[#4B372A]">
             <div className="text-[33px] tracking-[4px] mb-2 font-bold">
               游宜珊
             </div>

@@ -51,11 +51,11 @@ const App = () => {
   useGSAP(() => {
     const panels = gsap.utils.toArray(".panel");
     const colors = [
-      "#6F5E4B",
-      "#6F5E4B",
-      "#6F5E4B",
-      "#6F5E4B",
-      "#6F5E4B",
+      "#4B372A",
+      "#4B372A",
+      "#4B372A",
+      "#4B372A",
+      "#4B372A",
       "#65735E",
       "#65735E",
     ];
@@ -255,7 +255,7 @@ const App = () => {
           <div className="font-basheq">Bride</div>
           <div className="sub-title">Yu Yishan</div>
         </div>
-        <div className="family-info text-[#6F5E4B]">
+        <div className="family-info text-[#4B372A]">
           <div className="text-[33px] tracking-[4px] mb-2 font-bold">
             游宜珊
           </div>
@@ -294,10 +294,10 @@ const App = () => {
               <div className="text-[#F3EBD3] text-[20px] italic font-bold">
                 Address
               </div>
-              <div className="text-[#6F5E4B] text-[42px]  font-bold">
+              <div className="text-[#4B372A] text-[42px]  font-bold">
                 <span className="bg-[#F3EBD3] px-3">地點</span>
               </div>
-              <div className="text-[#6F5E4B] text-[42px] bg-[#F3EBD3] font-bold w-[460px]">
+              <div className="text-[#4B372A] text-[42px] bg-[#F3EBD3] font-bold w-[460px]">
                 <span className="bg-[#F3EBD3] px-3">圓觀 Palazzo Colonna</span>
               </div>
             </div>

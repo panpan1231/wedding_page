@@ -29,11 +29,12 @@
 
 
 body {
-  background: var(--background);
+  background: #1b1b1b;
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
   height: 300vh;
   overscroll-behavior: none;
+  
 }
 
 .circle {
@@ -76,6 +77,8 @@ canvas {
   z-index: -1;
 }
 
+
+
 .st0 {
   fill: none;
 }
@@ -95,6 +98,9 @@ iframe {
 }
 .horizon-container {
   background-color: #783536;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  z-index: 2;
 }
 
 .panel:nth-child(odd) {
@@ -105,7 +111,7 @@ iframe {
 .fill-form {
   background-image: url("/public/images/fillForm.jpg");
   width: 100vw;
-  height: 217vw;
+  height: 100vh;
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -144,24 +150,34 @@ iframe {
   background: linear-gradient(to right, #1b1919, #585858);
   border-color: #f3ebd3;
 }
+.block-base-size{
+  width: auto;
+  max-width: 430px;
+  height: 100vh;
+}
 
 .index {
   background-image: url("/public/images/cover.jpg");
-  width: auto;
-  height: 100vh;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
 }
 .bg-scroll{
   background-color: #00000069;
+  height: 100vh;
+  
+}
+
+.form-pc {
+  background-image: url("/public/images/fillForm.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .groom {
   padding: 20px 20px 80px 40px;
   background-image: url("/public/images/groom.jpg");
-  width: auto;
-  height: 100vh;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -170,18 +186,25 @@ iframe {
 .bride {
   padding: 20px 20px 80px 40px;
   background-image: url("/public/images/bride.jpg");
-  width: auto;
-  height: 100vh;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
 }
 
-
+.horizon-pc{
+  width: 100%;
+  height: 801px;
+  background-color: #4B372A;
+  background-image: url("/public/images/timeline.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
 .dress-code {
   background-image: url("/public/images/dress-code.jpg");
   width: 100vw;
-  height: 217vw;
+  height: 100vh;
+  max-width: 430px;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
@@ -283,12 +306,47 @@ iframe {
   box-shadow: 0 0 40px #0008;
   overflow: hidden;
 }
-@media (min-width: 431px) {
-  .app-mobile-frame {
-    border-radius: 32px;
-    min-height: 900px;
-    aspect-ratio: 430/932;
-    background: url('/images/phone.png') center/cover no-repeat, #000;
-    padding: 40px 0;
-  }
+.main-area{
+  background-color: #000;
 }
+@media (min-width: 431px) {
+  .main-area {
+    width: 350px;
+    height: auto;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%)
+  }
+  .main-scroll{
+    height: auto;
+    will-change: auto;
+    position: relative;
+  }
+
+  .block-base-size{
+    width: 100%;
+    max-height: 801px;
+  }
+  
+
+}
+
+/* 自訂全域滾動條樣式 */
+::-webkit-scrollbar {
+  width: 1px;
+  height: 1px;
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: transparent;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Firefox */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: #bbb transparent;
+}
+
