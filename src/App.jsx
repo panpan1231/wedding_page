@@ -401,7 +401,7 @@ const App = () => {
                 Welcome to our wedding
               </p>
             </div>
-            <div className="px-4 mt-[67vh] z-30">
+            <div className="px-4 mt-[500px] z-30">
               <ExpandableItem
                 title="Address"
                 subtitle="婚禮地點"
