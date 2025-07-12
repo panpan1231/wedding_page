@@ -238,7 +238,7 @@ const App = () => {
   return (
     <div className="main-area">
       <div className="w-full main-scroll" id="pcScrollContainer">
-        <div className="index block-base-size h-[100%] bg-black">
+        <div className="aindex block-base-size h-[100%] bg-black">
           <div className="flex justify-center items-center pt-[35%] px-[70px]">
             <svg
               ref={logoRef} // 加上 ref

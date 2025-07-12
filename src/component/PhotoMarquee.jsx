@@ -69,7 +69,6 @@ export default function PhotoMarquee() {
                 key={"row1-" + i}
                 src={src}
                 className="h-auto w-full my-2 shadow"
-                loading="lazy"
               />
             ))}
           </div>
@@ -92,7 +91,6 @@ export default function PhotoMarquee() {
                   key={"row2-" + i}
                   src={src}
                   className="h-auto w-full my-2 shadow"
-                  loading="lazy"
                 />
               ))}
           </div>
