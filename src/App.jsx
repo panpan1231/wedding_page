@@ -49,15 +49,20 @@ const App = () => {
     });
   }, []);
 
-  // Window resize 重新載入頁面
+  // Window resize 重新載入頁面（只在寬度變化且大於 500px 時）
   useEffect(() => {
     let resizeTimer;
+    let lastWidth = window.innerWidth;
 
     const handleResize = () => {
       clearTimeout(resizeTimer);
       resizeTimer = setTimeout(() => {
-        window.location.reload();
-      }, 500); // 延遲 500ms 避免頻繁重新載入
+        const currentWidth = window.innerWidth;
+        if (currentWidth !== lastWidth && currentWidth > 500) {
+          window.location.reload();
+        }
+        lastWidth = currentWidth;
+      }, 500);
     };
 
     window.addEventListener("resize", handleResize);
