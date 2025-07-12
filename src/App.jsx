@@ -42,6 +42,10 @@ const App = () => {
       "/images/aindex.jpg",
       "/images/groom.jpg",
       "/images/bride.jpg",
+      "/images/dress-code.jpg",
+      "/images/invite.jpg",
+      "/images/fillForm.jpg",
+      "/images/timeline.png",
     ];
 
     criticalImages.forEach((src) => {

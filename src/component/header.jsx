@@ -9,23 +9,7 @@ gsap.registerPlugin(TextPlugin);
 const Header = () => {
   const canvasRef = useRef(null);
   const images = useRef([]);
-  const frameCount = 288; // 0~287 共288張
-  const pathRef1 = useRef(null);
-  const pathRef2 = useRef(null);
-  const pathRef3 = useRef(null);
-  const [currentLine, setCurrentLine] = useState(0);
-  const lines = [
-    "從 12 歲青澀的國中同學，",
-    "到 27 歲彼此生命中的唯一。",
-    "我們一起經歷了人生中好多角色，",
-    "一路走來8年， 從青春到現在",
-    "慢慢把彼此的名字寫進未來的每一頁。",
-    "這段故事，不短也不長，剛剛好，",
-    "剛好成為現在的「我們」。",
-    "Evol with You, Love with Me",
-    "在彼此的陪伴裡成長、相愛，",
-    "這就是我們最浪漫的旋律。",
-  ];
+  const frameCount = 95; // 0~287 共288張
 
   //imgae scroll
   useGSAP(
@@ -66,9 +50,9 @@ const Header = () => {
       }
 
       // 加载图片
-      for (let i = 0; i <= 287; i++) {
+      for (let i = 0; i <= frameCount - 1; i++) {
         const img = new Image();
-        const num = String(i).padStart(3, "0"); // 補零
+        const num = String(i * 3).padStart(3, "0"); // 補零
         img.src = `/images/scroll/MVI_0636${num}.jpg`;
         img.onload = () => {
           images.current[i] = img;
