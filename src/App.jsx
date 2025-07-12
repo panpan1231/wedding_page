@@ -39,7 +39,7 @@ const App = () => {
   // 預載入關鍵圖片
   useEffect(() => {
     const criticalImages = [
-      "/images/aindex.jpg",
+      "/images/aindex.png",
       "/images/groom.jpg",
       "/images/bride.jpg",
       "/images/dress-code.jpg",
