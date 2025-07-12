@@ -49,6 +49,25 @@ const App = () => {
     });
   }, []);
 
+  // Window resize 重新載入頁面
+  useEffect(() => {
+    let resizeTimer;
+
+    const handleResize = () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        window.location.reload();
+      }, 500); // 延遲 500ms 避免頻繁重新載入
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      clearTimeout(resizeTimer);
+    };
+  }, []);
+
   useGSAP(
     () => {
       // logo 淡入動畫
@@ -470,7 +489,7 @@ const App = () => {
 
         <PhotoMarquee />
         <div className="botoom-area w-full h-[80px] bg-black flex justify-center items-center">
-          <p>© Pan&YU Wedding 2025</p>
+          <p>© Pan&Yu Wedding 2025</p>
         </div>
       </div>
     </div>

@@ -10,7 +10,7 @@ export default function HorizontalScroll() {
   useGSAP(() => {
     const target = animalRef.current.querySelector("#heart");
     gsap.to(target, {
-      scale: 1.1,
+      scale: 1.4,
       repeat: -1,
       yoyo: true,
       duration: 1,
