@@ -322,9 +322,11 @@ const App = () => {
           <div className="form-pc block-base-size">
             <div className="fade-bg h-full relative">
               <div className="relative top-2/4 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center w-full">
-                <div className="fill-context z-30">
+                <div className="fill-context z-30 ">
                   <p>從 12 歲青澀的國中同學</p>
-                  <p className="mb-5">到 27 歲彼此生命中的唯一</p>
+                  <p className="mb-5 tracking-widest">
+                    到 27 歲彼此生命中的唯一
+                  </p>
                   <p>我們一起經歷了人生中好多角色</p>
                   <p>一路走來8年， 從青春到現在</p>
                   <p>慢慢把彼此的名字寫進未來的每一頁</p>

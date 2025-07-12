@@ -293,7 +293,7 @@ export default function HorizontalScroll() {
         <section className="panel w-screen">
           <div className="absolute left-0 top-[40%] w-screen">
             <div className="text-[#F3EBD3] text-[20px] italic font-bold">
-              Cocktail
+              Open Seating
             </div>
             <div className="text-[#4B372A] text-[42px] mb-4 font-bold">
               <span className="bg-[#F3EBD3] px-3 py-1 ">開放入席</span>

@@ -130,6 +130,7 @@ iframe {
 .fill-context > p{
   padding: 10px 0;
   font-size: 14px;
+  letter-spacing: 1.5px;
 }
 .fill-btn{
   margin-top: 40px;
