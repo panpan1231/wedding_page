@@ -1,12 +1,17 @@
 "use client";
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef, useEffect, useState, Suspense, lazy } from "react";
+
 import gsap from "gsap";
-import Header from "./component/header";
 import HorizontalScroll from "./component/horizon";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import ExpandableItem from "./component/expandItem";
-import PhotoMarquee from "./component/PhotoMarquee";
+// import PhotoMarquee from "./component/PhotoMarquee";
+// import Header from "./component/header";
+
+const PhotoMarquee = lazy(() => import("./component/PhotoMarquee"));
+const Header = lazy(() => import("./component/header"));
+
 gsap.registerPlugin(ScrollTrigger);
 
 const App = () => {
@@ -34,13 +39,9 @@ const App = () => {
   // 預載入關鍵圖片
   useEffect(() => {
     const criticalImages = [
-      "/images/cover.jpg",
+      "/images/aindex.jpg",
       "/images/groom.jpg",
       "/images/bride.jpg",
-      "/images/dress-code.jpg",
-      "/images/invite.jpg",
-      "/images/fillForm.jpg",
-      "/images/timeline.png",
     ];
 
     criticalImages.forEach((src) => {
@@ -238,10 +239,16 @@ const App = () => {
   return (
     <div className="main-area">
       <div className="w-full main-scroll" id="pcScrollContainer">
-        <div className="aindex block-base-size h-[100%] bg-black">
-          <div className="flex justify-center items-center pt-[35%] px-[70px]">
+        <div className="aindex relative block-base-size h-[100%] bg-black">
+          <img
+            className="w-full h-full absolute"
+            loading="eager"
+            src="/images/aindex.png"
+          />
+          <div className="flex justify-center items-center pt-[35%] px-[70px] z-10">
             <svg
               ref={logoRef} // 加上 ref
+              className="z-10"
               width="100%"
               viewBox="0 0 260 121"
               fill="none"
