@@ -85,7 +85,7 @@ const App = () => {
         gsap.fromTo(
           logoRef.current,
           { opacity: 0 },
-          { opacity: 1, duration: 2.5, ease: "power2.out" }
+          { opacity: 1, duration: 4, ease: "power2.out" }
         );
       }
     },
@@ -243,12 +243,7 @@ const App = () => {
   return (
     <div className="main-area">
       <div className="w-full main-scroll" id="pcScrollContainer">
-        <div className="aindex relative block-base-size h-[100%] bg-black">
-          <img
-            className="w-full h-full absolute"
-            loading="eager"
-            src="/images/aindex.png"
-          />
+        <div className="aindex relative block-base-size h-[100%] ">
           <div className="flex justify-center items-center pt-[35%] px-[70px] z-10">
             <svg
               ref={logoRef} // 加上 ref
