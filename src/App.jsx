@@ -2,15 +2,15 @@
 import React, { useRef, useEffect, useState, Suspense, lazy } from "react";
 
 import gsap from "gsap";
+import Header from "./component/header";
 import HorizontalScroll from "./component/horizon";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import ExpandableItem from "./component/expandItem";
+
 // import PhotoMarquee from "./component/PhotoMarquee";
-// import Header from "./component/header";
 
 const PhotoMarquee = lazy(() => import("./component/PhotoMarquee"));
-const Header = lazy(() => import("./component/header"));
 
 gsap.registerPlugin(ScrollTrigger);
 

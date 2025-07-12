@@ -31,9 +31,9 @@ export default function PhotoMarquee() {
     const row2 = row2Ref.current;
     const firstImg = row1.querySelector("img");
     const imgHeight = firstImg ? firstImg.offsetHeight : 0;
-    const row1Height = imgHeight * images1.length;
-    const row2Height = imgHeight * images2.length;
-
+    const row1Height = imgHeight * images1.length || 1680;
+    const row2Height = imgHeight * images2.length || 1680;
+    console.log("row1Height", row1Height, "row2Height", row2Height);
     row1Tween.current = gsap.to(row1, {
       y: -row1Height,
       duration: 24,
