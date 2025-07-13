@@ -37,10 +37,11 @@ body {
   
 }
 .aindex {
-  background-image: url("/images/aindex.png");
+  background-image: url("/images/aindex.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
+  opacity: 0;
 }
 
 .circle {

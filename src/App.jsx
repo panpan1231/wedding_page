@@ -25,6 +25,7 @@ const App = () => {
   const brideTitleRef = useRef(null);
   const groomFamilyRef = useRef(null);
   const brideFamilyRef = useRef(null);
+  const aindexRef = useRef(null);
 
   const isPc = () => {
     return window.innerWidth > 430;
@@ -35,24 +36,6 @@ const App = () => {
     { time: "11:30 AM", label: "Open Seating" },
     { time: "12:00 PM", label: "Party!" },
   ];
-
-  // 預載入關鍵圖片
-  useEffect(() => {
-    const criticalImages = [
-      "/images/aindex.png",
-      "/images/groom.jpg",
-      "/images/bride.jpg",
-      "/images/dress-code.jpg",
-      "/images/invite.jpg",
-      "/images/fillForm.jpg",
-      "/images/timeline.png",
-    ];
-
-    criticalImages.forEach((src) => {
-      const img = new Image();
-      img.src = src;
-    });
-  }, []);
 
   // Window resize 重新載入頁面（只在寬度變化且大於 500px 時）
   useEffect(() => {
@@ -85,7 +68,7 @@ const App = () => {
         gsap.fromTo(
           logoRef.current,
           { opacity: 0 },
-          { opacity: 1, duration: 4, ease: "power2.out" }
+          { opacity: 1, duration: 5, ease: "power2.out", delay: 1 }
         );
       }
     },
@@ -240,10 +223,24 @@ const App = () => {
     }
   });
 
+  useEffect(() => {
+    // 畫面載入後讓 aindex 淡入
+    if (aindexRef.current) {
+      aindexRef.current.style.opacity = 0;
+      setTimeout(() => {
+        aindexRef.current.style.transition = "opacity 3s";
+        aindexRef.current.style.opacity = 1;
+      }, 50);
+    }
+  }, []);
+
   return (
     <div className="main-area">
       <div className="w-full main-scroll" id="pcScrollContainer">
-        <div className="aindex relative block-base-size h-[100%] ">
+        <div
+          className="aindex relative block-base-size h-[100%]"
+          ref={aindexRef}
+        >
           <div className="flex justify-center items-center pt-[35%] px-[70px] z-10">
             <svg
               ref={logoRef} // 加上 ref
